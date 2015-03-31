@@ -1,0 +1,19 @@
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <md-input-container id="input-container" flex>
+        <label id="question-input">Ask a question!</label>
+        <input ng-model="question">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="ask()">
+     Cancel
+    </md-button>
+    <md-button ng-click="ask(question)" class="md-primary" id="askButton">
+      Ask
+    </md-button>
+  </div>
+</md-dialog>

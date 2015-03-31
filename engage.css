@@ -1,0 +1,86 @@
+html {
+ overflow: hidden;
+ height: 100%;
+}
+
+
+body{
+	background-color: #EDEDED;
+	height:100%;
+	box-sizing: border-box;
+}
+
+div[role="main"] {
+ overflow-y: scroll;
+ height: 100%;
+}
+
+.question{
+	margin-left:auto;
+ 	margin-right:auto;
+ 	width: 100px;
+ 	text-align: center;
+}
+
+#fab{
+	background-color: #9CCC65;
+	position: fixed;
+	right:24px;
+	bottom: 24px;
+}
+
+
+
+#dialog{
+	width:50%;
+}
+
+#askButton{
+	color:#2980b9;
+}
+
+#input-container{
+	padding-bottom: 0px;
+}
+
+#question-input{
+	color: #2980b9;
+}
+
+
+
+.count{
+	float: right;
+}
+
+.time{
+	float:left;
+}
+
+.card{
+	background-color: #FFFFFF;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 15px;
+	transition: 0.4s ease;
+
+	
+
+}
+
+.card:hover{
+	box-shadow: 0 3px 6px rgba(0,0,0,0.24), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+
+.headerbar{
+	background-color: #FFFFFF;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.ng-move-active{
+	
+}
+
+
