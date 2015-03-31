@@ -2,13 +2,9 @@
 <html ng-app="Andrew">
   <head>
 
-    
     <!-- Material CSS Dependencies -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.7.0/angular-material.min.css">
     <link rel="stylesheet" href="engage.css">
-
-
-
 
     <!-- Angular Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -25,7 +21,7 @@
     <title>Engage</title>
   </head>
 
-  <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showAlert($event)">
+  <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showQuestionDialog($event)">
     <md-icon style="font-size:10px" md-svg-src="questionIcon.svg"></md-icon>
   </md-button>
 
@@ -37,32 +33,12 @@
   <body ng-controller="TestController">
   <div role="main">
 
-    
-
-    
-
-    
-
     <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="item.count > -1" ng-click="vote(item)">
       <md-card-content>
         <span><div class="time" am-time-ago="item.time"></div><div class="question">{{item.text}}</div><div class="count">{{item.count}}</div></span>
       </md-card-content>
     </md-card> 
   </div>  
-    
-
-    
-    <!--
-    
-    <div ng-repeat="item in list | orderBy: '-count'" ng-if="item.count > -1">
-        <h2 ng-click="andrew(item)" >{{item.text}} {{item.count}}</h2>
-    </div> -->
-
-
-
-
-
-
 
     <!-- Angular Material Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>

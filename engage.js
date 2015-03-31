@@ -13,7 +13,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
     
 
-     $scope.showAlert = function() {
+     $scope.showQuestionDialog = function() {
         $mdDialog.show({
            templateUrl: 'test.html',
            controller: DialogController
