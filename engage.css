@@ -15,13 +15,6 @@ div[role="main"] {
  height: 100%;
 }
 
-.question{
-	margin-left:auto;
- 	margin-right:auto;
- 	width: 100px;
- 	text-align: center;
-}
-
 #fab{
 	background-color: #9CCC65;
 	position: fixed;
@@ -29,6 +22,17 @@ div[role="main"] {
 	bottom: 24px;
 }
 
+
+.headerbar{
+	background-color: #FFFFFF;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+
+
+/*
+All CSS of the Dialog html elemtns
+*/
 
 
 #dialog{
@@ -48,14 +52,53 @@ div[role="main"] {
 }
 
 
+/*
+All CSS to do with the html elements on the actual cards
+*/
+
+.outer{
+	width: 100%; 
+	margin-left: auto; 
+    margin-right: auto; 
+}
+
+.question{
+ 	display: inline-block;
+ 	float: left;
+ 	width: 76%;
+ 	text-align: center;
+}
 
 .count{
+	display: inline-block;
 	float: right;
+	width: 2%;
 }
 
 .time{
-	float:left;
+	display: inline-block;
+	float: left;
+	width: 13%;
 }
+
+.voteIcon{
+	display: inline-block;
+	float: right;
+	width: 5%;
+	margin-bottom: -15px;
+}
+
+.wild{
+	transition: 0.2s ease;
+}
+
+.wild:hover{
+	color:#9CCC65;
+}
+
+
+
+
 
 .card{
 	background-color: #FFFFFF;
@@ -63,9 +106,6 @@ div[role="main"] {
 	margin-right: 15%;
 	margin-top: 15px;
 	transition: 0.4s ease;
-
-	
-
 }
 
 .card:hover{
@@ -74,13 +114,7 @@ div[role="main"] {
 
 
 
-.headerbar{
-	background-color: #FFFFFF;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
 
-.ng-move-active{
-	
-}
+
 
 

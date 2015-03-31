@@ -19,4 +19,6 @@ For this project I am using Google's Material Design and Firebase.
  * Add a switch where users can sort questions by how recent they are or how popular they are.
  * Add a vote icon (up arrow) that changes colour when you have voted on that question
  * Use cookies to ensure users vote on a question only once
+ * Credit Flat Icon designers
+ * Organise project structure into files. Ie /Engage/css etc
  
