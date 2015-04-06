@@ -11,7 +11,7 @@ body{
 }
 
 div[role="main"] {
- overflow-y: scroll;
+ /*overflow-y: scroll; */
  height: 100%;
 }
 
@@ -26,6 +26,10 @@ div[role="main"] {
 .headerbar{
 	background-color: #FFFFFF;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#menuexpand{
+	width:50px;
 }
 
 

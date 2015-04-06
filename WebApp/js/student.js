@@ -30,7 +30,18 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
      
 
 
+          $scope.showQuestionDialog = function() {
+             $mdDialog.show({
+                templateUrl: 'test.html',
+                controller: DialogController
+              })
+             .then(function(question) {
+                   $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
+                   $mdToast.showSimple('Your question has been submitted for moderation');
 
+                 }, function() {
+                 });
+          }
 
 
            function DialogController($scope, $mdDialog) {
@@ -54,7 +65,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
       var voted = $cookieStore.get(item.$id);
 
       if(voted != undefined){
-        $mdToast.showSimple('You have moderated this question.');
+        $mdToast.showSimple('You have already voted on this question.');
       } else {
         $cookieStore.put(item.$id, 'voted');
          var ref = new Firebase("https://engaged.firebaseio.com/"+roomCode+"/"+item.$id);

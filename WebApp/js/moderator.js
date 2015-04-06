@@ -28,7 +28,18 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
             
      
+            $scope.showQuestionDialog = function() {
+               $mdDialog.show({
+                  templateUrl: 'test.html',
+                  controller: DialogController
+                })
+               .then(function(question) {
+                     $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
+                     $mdToast.showSimple('Your question has been submitted for moderation');
 
+                   }, function() {
+                   });
+            }
 
 
 

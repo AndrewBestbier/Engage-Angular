@@ -1,8 +1,8 @@
 var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
 
 
-app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
-  function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore) {
+app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
+  function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore, $rootScope) {
      
     var roomCode = 0;
 
@@ -43,6 +43,9 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                templateUrl: 'welcomeDialog.html',
                controller: DialogController
              });
+
+
+
      
     
 
@@ -62,12 +65,67 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                   });
            }
 
+           $scope.showOptionsDialog = function() {
+              
+
+              $mdDialog.show({
+                 templateUrl: 'options.html',
+                 controller: DialogController
+               })
+              .then(function(question) {
+                    $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
+                    $mdToast.showSimple('Your question has been submitted for moderation');
+
+                  }, function() {
+                  });
+           }
+
+           $rootScope.sorter = '-count';
+           $rootScope.modvalue = 0;
+
+            
 
 
-
-           function DialogController($scope, $mdDialog) {
+           function DialogController($scope, $mdDialog, $rootScope) {
              
              $scope.roomCode = roomCode;
+
+             
+
+             $scope.onSortChange = function(cbState){
+               
+               
+
+               if(cbState)
+               {
+                $rootScope.sorter = '-time';
+               }
+               else 
+               {
+                $rootScope.sorter = '-count';
+               }
+
+               };
+
+
+             $scope.onModChange = function(cbState){
+               
+               
+
+               if(cbState)
+               {
+                $rootScope.modvalue = -1;
+               }
+               else 
+               {
+                $rootScope.modvalue = 0;
+               }
+
+               };
+
+
+
+             
 
              $scope.hide = function() {
                $mdDialog.hide();
@@ -79,7 +137,17 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                $mdDialog.hide(answer);
              }};
 
-     $scope.sorter = '-count';
+
+     
+      
+
+    
+
+
+      
+     
+
+     
      
      $scope.vote = function(item){
 
