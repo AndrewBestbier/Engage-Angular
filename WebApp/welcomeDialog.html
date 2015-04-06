@@ -1,0 +1,30 @@
+<style type="text/css">
+
+  #hover{
+    color:#9CCC65;
+    background-color: #9CCC65;
+  }
+
+  #hover:hover{
+    color:#9CCC65;
+    background-color: #FFFFFF;
+  }
+
+</style>
+
+
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <h2 class="md-display-1">Welcome to Engage!</h2>
+      <h3 class="md-display-1">Your room code is: <a style="color:#9CCC65">{{roomCode}}</a></h3>
+      <h3 class="md-display-1">Hover to see moderator code: <a id="hover">151444</a></h3>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="ask(question)" class="md-primary" id="askButton">
+      Okay
+    </md-button>
+  </div>
+</md-dialog>

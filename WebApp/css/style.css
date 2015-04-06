@@ -50,7 +50,7 @@
 
 .span_h2 {font-weight: 300;color: #2980b9;}
 
-.text_b{color: #2980b9;}
+.text_b{color: #666666;}
 
 .in{font-weight: 400 !important; font-style: normal !important;}
 
@@ -61,7 +61,7 @@
 }
 .card-content a {color: white;}
 
-.card-content a:hover {color: #2980b9;}
+.card-content a:hover {color: #FFFFFF;}
 
 #work, #team{background: rgb(247, 247, 247);}
 
