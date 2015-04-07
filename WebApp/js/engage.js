@@ -83,12 +83,18 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
            $rootScope.sorter = '-count';
            $rootScope.modvalue = 0;
 
+           
+
+
+
             
 
 
            function DialogController($scope, $mdDialog, $rootScope) {
              
              $scope.roomCode = roomCode;
+
+             $scope.roomPassword =roomPassword;
 
              
 
