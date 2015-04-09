@@ -40,7 +40,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
             var milliSeconds = date.getTime();
 
             $mdDialog.show({
-               templateUrl: 'welcomeDialog.html',
+               templateUrl: 'optionsDialog.html',
                controller: DialogController
              });
 
@@ -58,7 +58,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
               
 
               $mdDialog.show({
-                 templateUrl: 'options.html',
+                 templateUrl: 'optionsDialog.html',
                  controller: DialogController
                });
            }
@@ -126,18 +126,6 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                $mdDialog.hide(answer);
              }};
 
-
-     
-      
-
-    
-
-
-      
-     
-
-     
-     
      $scope.vote = function(item){
 
       var voted = $cookieStore.get(item.$id);

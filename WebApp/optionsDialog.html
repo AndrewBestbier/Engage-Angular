@@ -1,0 +1,45 @@
+<style type="text/css">
+
+  #hover{
+    color:#9CCC65;
+    background-color: #9CCC65;
+  }
+
+  #hover:hover{
+    color:#9CCC65;
+    background-color: #FFFFFF;
+  }
+
+  .optionsDialogHeader{
+    text-align: center;
+  }
+
+</style>
+
+
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <div class="dialog-content">
+        <h2 class="md-display-2 optionsDialogHeader">Welcome to Engage!</h2>
+        <h4 class="md-display-2">Your room code is: <a style="color:#9CCC65">{{roomCode}}</a></h3>
+        <h4 class="md-display-2">Hover to see moderator code: <a id="hover">{{roomPassword}}</a></h3>
+        <h3 class="md-display-2 optionsDialogHeader">Settings:</h3>
+      </div>
+      <md-input-container id="input-container" flex>
+        <md-switch ng-model="data.cb5" aria-label="Switch 2" class="md-primary" ng-change="onSortChange(data.cb5)">
+          Questions Ordered by most recent
+        </md-switch>
+        <md-switch ng-model="data.cb3" aria-label="Switch 2" class="md-primary" ng-change="onModChange(data.cb3)">
+          Moderation not required
+        </md-switch>
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="ask()" class="md-primary" id="askButton">
+      Done
+    </md-button>
+  </div>
+</md-dialog>
