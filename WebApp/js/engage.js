@@ -52,23 +52,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
 
 
-           $scope.showQuestionDialog = function() {
-              $mdDialog.show({
-                 templateUrl: 'test.html',
-                 controller: DialogController,
-                 onComplete: afterShowAnimation
-               })
-              .then(function(question) {
-                    $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
-                    $mdToast.showSimple('Your question has been submitted for moderation');
-
-                  }, function() {
-                  });
-
-              function afterShowAnimation(scope, element, options) {
-                         document.getElementById("question-input").focus();
-                      }
-           }
+           
 
            $scope.showOptionsDialog = function() {
               
@@ -76,13 +60,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
               $mdDialog.show({
                  templateUrl: 'options.html',
                  controller: DialogController
-               })
-              .then(function(question) {
-                    $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
-                    $mdToast.showSimple('Your question has been submitted for moderation');
-
-                  }, function() {
-                  });
+               });
            }
 
            $rootScope.sorter = '-count';
@@ -163,17 +141,9 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
      $scope.vote = function(item){
 
       var voted = $cookieStore.get(item.$id);
+      $mdToast.showSimple('You cannot vote on questions');
 
-      if(voted != undefined){
-        $mdToast.showSimple('You have already voted on this question.');
-      } else {
-        $cookieStore.put(item.$id, 'voted');
-         var ref = new Firebase("https://engaged.firebaseio.com/"+roomCode+"/"+item.$id);
-         ref.transaction(function(current_val) {
-         current_val['count']++;
-         return current_val;
-        })
-      }
+      
       }
 
 
