@@ -55,7 +55,8 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
            $scope.showQuestionDialog = function() {
               $mdDialog.show({
                  templateUrl: 'test.html',
-                 controller: DialogController
+                 controller: DialogController,
+                 onComplete: afterShowAnimation
                })
               .then(function(question) {
                     $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
@@ -63,6 +64,10 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
                   }, function() {
                   });
+
+              function afterShowAnimation(scope, element, options) {
+                         document.getElementById("question-input").focus();
+                      }
            }
 
            $scope.showOptionsDialog = function() {

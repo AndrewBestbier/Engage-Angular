@@ -2,8 +2,8 @@
   <md-content class="sticky-container">
     <div class="dialog-content">
       <md-input-container id="input-container" flex>
-        <label id="question-input">Ask a question!</label>
-        <input ng-model="question">
+        <label>Ask a question!</label>
+        <input id="question-input" ng-model="question" onkeydown="if (event.keyCode == 13) document.getElementById('askButton').click()">
       </md-input-container>
     </div>
   </md-content>
