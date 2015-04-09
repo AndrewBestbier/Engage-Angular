@@ -1,7 +1,7 @@
 var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
 
 
-app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
+app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
   function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore) {
      
     var roomCode = 0;
@@ -30,7 +30,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
      
             $scope.showQuestionDialog = function() {
                $mdDialog.show({
-                  templateUrl: 'test.html',
+                  templateUrl: 'questionDialog.html',
                   controller: DialogController,
                   onComplete: afterShowAnimation
                 })

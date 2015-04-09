@@ -1,7 +1,7 @@
 var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
 
 
-app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
+app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
   function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore) {
      
     var roomCode = 0;
@@ -10,35 +10,15 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
             roomCode = $cookieStore.get("roomCode");
 
-            
-
-
-
-            
-
             var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode));
-
             $scope.list = list;
 
             var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
-
-
-
             $scope.moderationConstant = moderationObject;
-
-            
-
-
-
-            
-
-            
-     
-
 
           $scope.showQuestionDialog = function() {
              $mdDialog.show({
-                templateUrl: 'test.html',
+                templateUrl: 'questionDialog.html',
                 controller: DialogController,
                 onComplete: afterShowAnimation
               })

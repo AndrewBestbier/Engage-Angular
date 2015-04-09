@@ -1,7 +1,7 @@
 var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
 
 
-app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
+app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
   function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore, $rootScope) {
      
     var roomCode = 0;
@@ -34,28 +34,11 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
             }
 
-            
-
- 
-
-
-            
-
-
-            
-
-
             var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
 
 
 
             $scope.moderationConstant = moderationObject;
-
-
-
-
-
-
 
             var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode));
 
@@ -73,15 +56,6 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
              });
 
 
-
-     
-    
-
-
-
-
-           
-
            $scope.showOptionsDialog = function() {
               
 
@@ -95,13 +69,6 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
            $rootScope.sorter = '-count';
            
-
-           
-
-
-
-            
-
 
            function DialogController($scope, $mdDialog, $rootScope) {
              
@@ -154,10 +121,6 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                }
 
                };
-
-
-
-             
 
              $scope.hide = function() {
                $mdDialog.hide();

@@ -35,8 +35,7 @@
     <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Engage</h1>
   </md-toolbar>
 
-
-  <body ng-controller="TestController">
+  <body ng-controller="QuestionsController">
   <div role="main">
 
     <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="item.count > -1 && item.count<1" ng-click="vote(item)">

@@ -4,8 +4,7 @@
 
     <!-- Meta so that all mobile devices can view this page at scale -->
     <meta name="viewport" content="initial-scale=1">
-
-
+    
     <!-- Material CSS Dependencies -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.7.0/angular-material.min.css">
     <link rel="stylesheet" href="css/engage.css">
@@ -36,8 +35,7 @@
     <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Engage</h1>
   </md-toolbar>
 
-
-  <body ng-controller="TestController">
+  <body ng-controller="QuestionsController">
   <div role="main">
 
     <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="item.count > moderationConstant.moderationConstant" ng-click="vote(item)">
