@@ -9,8 +9,6 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
     angular.element(document).ready(function () {
 
             roomCode = $cookieStore.get("roomCode");
-
-            //For the moderator
             roomPassword = $cookieStore.get("roomPassword");
 
             if(roomCode == undefined){
@@ -27,12 +25,42 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
               obj.roomCode = roomCode;
               obj.$save()
 
+              var moderatedRef = new Firebase("https://engaged.firebaseio.com/"+roomCode +"/Moderation");
+
+              var obj = $firebaseObject(moderatedRef);
+              obj.moderationConstant = 0;
+              obj.moderationBoolean= false;
+              obj.$save()
+
             }
+
+            
+
+ 
+
+
+            
+
+
+            
+
+
+            var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
+
+
+
+            $scope.moderationConstant = moderationObject;
+
+
+
+
+
+
 
             var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode));
 
+            
             $scope.list = list;
-
 
 
             var date = new Date();
@@ -57,6 +85,8 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
            $scope.showOptionsDialog = function() {
               
 
+
+
               $mdDialog.show({
                  templateUrl: 'optionsDialog.html',
                  controller: DialogController
@@ -64,7 +94,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
            }
 
            $rootScope.sorter = '-count';
-           $rootScope.modvalue = 0;
+           
 
            
 
@@ -75,9 +105,15 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
            function DialogController($scope, $mdDialog, $rootScope) {
              
+             
+
              $scope.roomCode = roomCode;
 
              $scope.roomPassword =roomPassword;
+
+
+
+             $scope.moderation =moderationObject;
 
              
 
@@ -104,10 +140,17 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                if(cbState)
                {
                 $rootScope.modvalue = -1;
+                moderationObject.moderationConstant = -1;
+                moderationObject.moderationBoolean = true;
+                moderationObject.$save();
+
                }
                else 
                {
                 $rootScope.modvalue = 0;
+                moderationObject.moderationConstant = 0;
+                moderationObject.moderationBoolean = false;
+                moderationObject.$save();
                }
 
                };

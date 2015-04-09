@@ -20,6 +20,14 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
             $scope.list = list;
 
+            var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
+
+
+
+            $scope.moderationConstant = moderationObject;
+
+            
+
 
 
             

@@ -40,7 +40,7 @@
   <body ng-controller="TestController">
   <div role="main">
 
-    <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="item.count > 0" ng-click="vote(item)">
+    <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="item.count > moderationConstant.moderationConstant" ng-click="vote(item)">
       <md-card-content>
         <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.text}}</div><div class="count">{{item.count}}</div><div class="voteIcon"><i class="fa fa-arrow-up fa-lg wild"></i></div></div>
 
