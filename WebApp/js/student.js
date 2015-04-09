@@ -22,9 +22,7 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
 
 
 
-            var date = new Date();
-
-            var milliSeconds = date.getTime();
+            
 
             
      
@@ -37,6 +35,10 @@ app.controller("TestController", ["$scope", "$firebaseArray","$firebaseObject", 
                 onComplete: afterShowAnimation
               })
              .then(function(question) {
+
+                   var date = new Date();
+                   var milliSeconds = date.getTime();
+                   
                    $scope.alert = list.$add({text: question, count : 0, time: milliSeconds  });
                    $mdToast.showSimple('Your question has been submitted for moderation');
 
