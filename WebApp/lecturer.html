@@ -27,8 +27,11 @@
     <title>Engage</title>
   </head>
 
-  <md-toolbar layout="row" style="background-color:#2980b9; padding-left:75px;" class="headerbar" md-scroll-shrink>
-    <h1  class="md-toolbar-tools" layout-align-gt-sm="center">Engage</h1>
+  <md-toolbar layout="row" style="background-color:#2980b9;" class="headerbar" md-scroll-shrink>
+    <md-button class="md-icon-button" aria-label="More">
+      <i ng-click="navigate()" id="menuexpand" class="fa fa-caret-left"></i>
+    </md-button>
+    <h1  class="md-toolbar-tools" style="margin-left:15px;" layout-align-gt-sm="center">Engage</h1>
     <md-button class="md-icon-button" aria-label="More">
       <i ng-click="showOptionsDialog($event)" id="menuexpand" class="fa fa-ellipsis-v"></i>
     </md-button>

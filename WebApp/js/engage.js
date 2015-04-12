@@ -1,5 +1,9 @@
 var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
-
+app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('orange');
+});
 
 app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
   function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore, $rootScope) {
@@ -55,12 +59,11 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
                controller: DialogController
              });
 
+            $scope.navigate = function() {
+              window.location.href = 'index.html';
+            }
 
            $scope.showOptionsDialog = function() {
-              
-
-
-
               $mdDialog.show({
                  templateUrl: 'optionsDialog.html',
                  controller: DialogController
