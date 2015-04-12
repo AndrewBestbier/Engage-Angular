@@ -8,7 +8,19 @@ app.config(function($mdThemingProvider) {
 app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
   function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore, $rootScope) {
      
-    
+    var ref = new Firebase("https://engaged.firebaseio.com/");
+    var user = ref.getAuth();
+    //Tab 1 Joining another room
+
+    //var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+user.password.email+"/joinList"));
+
+    email = user.password.email;
+    email = email.replace(/[^a-zA-Z ]/g, "")
+
+    var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+email+"/joinList"));
+    //list.$add({roomName: "My first Room", roomCode : 12345});
+
+    $scope.joinList = joinList;
 
 
     //Tab 4: Changing the password
@@ -16,8 +28,7 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
       var oldPassword = document.getElementById('oldPassword').value;
       var newPassword = document.getElementById('newPassword').value;
 
-    var ref = new Firebase("https://engaged.firebaseio.com/");
-    var user = ref.getAuth();
+    
     
     ref.changePassword({
       email       : user.password.email,
