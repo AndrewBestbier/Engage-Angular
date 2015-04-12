@@ -1003,7 +1003,7 @@
         _relativeTime : {
             future : 'in %s',
             past : '%s ago',
-            s : 'few seconds',
+            s : 'seconds',
             m : 'a minute',
             mm : '%d minutes',
             h : 'an hour',
