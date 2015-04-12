@@ -40,7 +40,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
             $scope.moderationConstant = moderationObject;
 
-            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode));
+            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions"));
 
             
             $scope.list = list;
@@ -81,6 +81,19 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
 
              $scope.moderation =moderationObject;
+
+             
+
+             $scope.clearQuestion = function()
+             {
+            
+
+              
+
+              var questionsRef = new Firebase("https://engaged.firebaseio.com/"+roomCode +"/questions");
+
+              questionsRef.remove();
+             }
 
              
 

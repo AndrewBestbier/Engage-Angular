@@ -10,7 +10,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
             roomCode = $cookieStore.get("roomCode");
 
-            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode));
+            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions"));
             $scope.list = list;
 
             var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
@@ -63,7 +63,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
         $mdToast.showSimple('You have already voted on this question.');
       } else {
         $cookieStore.put(item.$id, 'voted');
-         var ref = new Firebase("https://engaged.firebaseio.com/"+roomCode+"/"+item.$id);
+         var ref = new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions/"+item.$id);
          ref.transaction(function(current_val) {
          current_val['count']++;
          return current_val;

@@ -16,7 +16,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
             
 
-            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode));
+            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions"));
 
             $scope.list = list;
 
