@@ -12,12 +12,12 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
     angular.element(document).ready(function () {
 
-            roomCode = $cookieStore.get("roomCode");
+            roomCode = $cookieStore.get("studentRoomCode");
 
-            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions"));
+            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/questions"));
             $scope.list = list;
 
-            var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
+            var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/Moderation"));
             $scope.moderationConstant = moderationObject;
 
           $scope.showQuestionDialog = function() {
@@ -60,7 +60,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
      $scope.sorter = '-count';
 
      $scope.navigate = function() {
-       window.location.href = 'index.html';
+       window.location.href = 'dashboard.html';
      }
 
      
@@ -73,7 +73,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
         $mdToast.showSimple('You have already voted on this question.');
       } else {
         $cookieStore.put(item.$id, 'voted');
-         var ref = new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions/"+item.$id);
+         var ref = new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/questions/"+item.$id);
          ref.transaction(function(current_val) {
          current_val['count']++;
          return current_val;

@@ -15,36 +15,13 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
             roomCode = $cookieStore.get("roomCode");
             roomPassword = $cookieStore.get("roomPassword");
 
-            if(roomCode == undefined){
-              roomCode = Math.floor(Math.random() * 1000000) + 1;
-              $cookieStore.put("roomCode", roomCode);
-
-              //For the moderator
-              roomPassword = Math.floor(Math.random() * 1000000) + 1;
-              $cookieStore.put("roomPassword", roomPassword);
-
-              moderatorFirebaseRef = new Firebase("https://engaged.firebaseio.com/ModToRoomMap/"+roomPassword+"/");
-
-              var obj = $firebaseObject(moderatorFirebaseRef);
-              obj.roomCode = roomCode;
-              obj.$save()
-
-              var moderatedRef = new Firebase("https://engaged.firebaseio.com/"+roomCode +"/Moderation");
-
-              var obj = $firebaseObject(moderatedRef);
-              obj.moderationConstant = 0;
-              obj.moderationBoolean= false;
-              obj.$save()
-
-            }
-
-            var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/Moderation"));
+            var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/Moderation"));
 
 
 
             $scope.moderationConstant = moderationObject;
 
-            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/"+roomCode+"/questions"));
+            var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/questions"));
 
             
             $scope.list = list;
@@ -60,7 +37,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
              });
 
             $scope.navigate = function() {
-              window.location.href = 'index.html';
+              window.location.href = 'dashboard.html';
             }
 
            $scope.showOptionsDialog = function() {
@@ -93,7 +70,7 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
               
 
-              var questionsRef = new Firebase("https://engaged.firebaseio.com/"+roomCode +"/questions");
+              var questionsRef = new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode +"/questions");
 
               questionsRef.remove();
              }

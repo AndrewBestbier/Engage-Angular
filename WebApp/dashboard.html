@@ -39,17 +39,17 @@
 
   <body ng-controller="DashboardController">
 
-    <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showQuestionDialog($event)">
+    <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showDashboardDialog()">
       <i class="fa fa-plus fa-2x"></i>
     </md-button>
 
-    <md-tabs class="md-accent" md-selected="data.selectedIndex">
+    <md-tabs class="md-accent" md-selected="selectedIndex">
           <md-tab id="tab1">
             <md-tab-label>Join a Room</md-tab-label>
             <md-tab-template>
               <md-card class="card" ng-repeat="item in joinList">
                 <md-card-content>
-                  <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i class="fa fa-arrow-right fa-lg wild"></i></div></div>
+                  <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i ng-click="joinRoom(item)" class="fa fa-arrow-right fa-lg wild"></i></div></div>
                 </md-card-content>
               </md-card> 
             </md-tab-template>
@@ -57,15 +57,17 @@
           <md-tab id="tab2">
             <md-tab-label>Create a room</md-tab-label>
             <md-tab-template>
-              View for Item #2 <br/>
-              data.selectedIndex = 1;
+              <md-card class="card" ng-repeat="item in createList">
+                <md-card-content>
+                  <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i ng-click="joinCreateRoom(item)" class="fa fa-arrow-right fa-lg wild"></i></div></div>
+                </md-card-content>
+              </md-card> 
             </md-tab-template>
           </md-tab>
           <md-tab id="tab2">
             <md-tab-label>Moderate a room</md-tab-label>
             <md-tab-template>
-              View for Item #3 <br/>
-              data.selectedIndex = 2;
+              This is not working yet :)
             </md-tab-template>
           </md-tab>
           <md-tab id="tab2">

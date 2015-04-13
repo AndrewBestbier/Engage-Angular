@@ -1,0 +1,20 @@
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <h2 class="md-display-2 optionsDialogHeader">Create a Room</h2>
+      <md-input-container id="input-container" flex>
+        <label>Room Name</label>
+        <input id="roomName" ng-model="roomName">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()">
+     Cancel
+    </md-button>
+    <md-button ng-click="create(roomName)" class="md-primary md-hue-1" id="askButton">
+      Create
+    </md-button>
+  </div>
+</md-dialog>

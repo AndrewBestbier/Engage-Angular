@@ -1,0 +1,20 @@
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <h2 class="md-display-2 optionsDialogHeader">Join a Room</h2>
+      <md-input-container id="input-container" flex>
+        <label>Room Code</label>
+        <input id="roomCode" ng-model="roomCode">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()">
+     Cancel
+    </md-button>
+    <md-button ng-click="join(roomCode)" class="md-primary md-hue-1" id="askButton">
+      Join
+    </md-button>
+  </div>
+</md-dialog>
