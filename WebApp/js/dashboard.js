@@ -12,6 +12,10 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
     var user = ref.getAuth();
 
     $scope.selectedIndex = 0;
+
+    $scope.navigate = function() {
+      window.location.href = 'index.html';
+    }
     
     //Tab 1 Joining another room
     email = user.password.email;
@@ -116,6 +120,8 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
               } else {
                 var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+email+"/joinList"));
                 joinList.$add({roomName: snapshot.val().roomName, roomCode : roomCode});
+                //Close the dialog
+                $mdDialog.hide();
               }
 
 
@@ -150,9 +156,9 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
         newPassword : newPassword
       }, function(error) {
         if (error === null) {
-          console.log("Password changed successfully");
+          alert("Password changed successfully");
         } else {
-          console.log("Error changing password:", error);
+          alert("Error changing password:", error);
         }
       });
   }

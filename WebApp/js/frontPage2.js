@@ -14,7 +14,7 @@ document.getElementById("createAccount").addEventListener("click", function() {
             email : email
           }, function(error) {
           if (error === null) {
-            console.log("Password reset email sent successfully");
+            alert("A password has been sent to your email. Please use this to login!");
           } else {
             console.log("Error sending password reset email:", error);
           }
@@ -37,7 +37,7 @@ document.getElementById("loginButton").addEventListener("click", function() {
       password : password
     }, function(error, authData) {
       if (error) {
-        console.log("Login Failed!", error);
+        alert("Login Failed!", error);
       } else {
         window.location.href = 'dashboard.html';
         document.cookie="userEmail=" + email;
