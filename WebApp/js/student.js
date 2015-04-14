@@ -68,17 +68,37 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
      $scope.vote = function(item){
 
       var voted = $cookieStore.get(item.$id);
+      var userRef = new Firebase("https://engaged.firebaseio.com/");
+      var user = userRef.getAuth();
+      
 
-      if(voted != undefined){
+
+
+      
+      $cookieStore.put(item.$id, 'voted');
+
+
+      var userObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/voted/"+item.$id));
+  
+      userObject.userid = user.uid;
+      
+
+      userObject.$save().then(function(ref) {
+        var ref = new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/questions/"+item.$id);
+       ref.transaction(function(current_val) {
+       current_val['count']++;
+       return current_val;
+       });
+      }, function(error) {
         $mdToast.showSimple('You have already voted on this question.');
-      } else {
-        $cookieStore.put(item.$id, 'voted');
-         var ref = new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/questions/"+item.$id);
-         ref.transaction(function(current_val) {
-         current_val['count']++;
-         return current_val;
-        })
-      }
+      });
+
+
+         
+
+         
+        
+      
       }
 
 

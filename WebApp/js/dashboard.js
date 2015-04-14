@@ -18,10 +18,8 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
     }
     
     //Tab 1 Joining another room
-    email = user.password.email;
-    email = email.replace(/[^a-zA-Z ]/g, "")
 
-    var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+email+"/joinList"));
+    var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/joinList"));
     $scope.joinList = joinList;
 
     $scope.joinRoom = function(item)
@@ -31,7 +29,7 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
     }
 
     //Tab 2: Creating a room
-    var createList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+email+"/createList"));
+    var createList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/createList"));
     $scope.createList = createList;
 
 
@@ -76,7 +74,7 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
         $scope.create = function(roomName)
         {
           //Link room to user name
-          var createList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+email+"/createList"));
+          var createList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/createList"));
           roomCode = Math.floor(Math.random() * 1000000) + 1;
           roomPassword = Math.floor(Math.random() * 1000000) + 1;
           createList.$add({roomName: roomName, roomCode : roomCode, roomPassword : roomPassword});
@@ -118,7 +116,7 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
               if(result==null){
                 alert("This room does not exist");
               } else {
-                var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+email+"/joinList"));
+                var joinList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/joinList"));
                 joinList.$add({roomName: snapshot.val().roomName, roomCode : roomCode});
                 //Close the dialog
                 $mdDialog.hide();
