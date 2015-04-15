@@ -23,11 +23,15 @@
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
     <script type="text/javascript" src="js/dashboard.js"></script>
 
-    <!-- Moment Dependencies -->
-    <script src="js/moment.js"></script>
-    <script src="js/angular-moment.js"></script>
-
     <title>Engage</title>
+
+    <style type="text/css">
+
+    .md-tabs-content{
+      height:1000px;
+    }
+
+    </style>
   </head>
 
   <md-toolbar layout="row" style="background-color:#2980b9;" class="headerbar" md-scroll-shrink>
@@ -67,7 +71,11 @@
           <md-tab id="tab2">
             <md-tab-label>Moderate a room</md-tab-label>
             <md-tab-template>
-              This is not working yet :)
+              <md-card class="card" ng-repeat="item in modList">
+                <md-card-content>
+                  <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i ng-click="joinModRoom(item)" class="fa fa-arrow-right fa-lg wild"></i></div></div>
+                </md-card-content>
+              </md-card>
             </md-tab-template>
           </md-tab>
           <md-tab id="tab2">

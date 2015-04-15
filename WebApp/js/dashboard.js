@@ -1,4 +1,4 @@
-var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
+var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","ngCookies"]);
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
@@ -40,6 +40,19 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
       window.location.href = 'lecturer.html';
     }
 
+    //Tab 3: Moderating a room
+    var modList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/modList"));
+    $scope.modList = modList;
+
+    $scope.joinModRoom = function(item)
+    {
+      $cookieStore.put("roomCode", item.roomCode);
+      $cookieStore.put("roomPassword", item.roomPassword);
+      window.location.href = 'moderator.html';
+    }
+
+
+
     $scope.showDashboardDialog = function() 
     {
       selectedIndex = $scope.selectedIndex;
@@ -63,7 +76,11 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
       } else if (selectedIndex ==2)
       {
         //Moderation
-        console.log("Moderation")
+        //Create a room
+        $mdDialog.show({
+           templateUrl: 'moderateRoomDialog.html',
+           controller: DialogController
+         });
       }
 
       
@@ -95,10 +112,44 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
           moderatorFirebaseRef = new Firebase("https://engaged.firebaseio.com/ModToRoomMap/"+roomPassword+"/");
           var obj = $firebaseObject(moderatorFirebaseRef);
           obj.roomCode = roomCode;
+          obj.roomName = roomName;
           obj.$save()
 
           //Close the dialog
           $mdDialog.hide();
+        }
+
+        $scope.moderate = function(roomPassword)
+        {
+          if(roomPassword == '')
+          {
+            alert("Please input a password");
+          }
+          else 
+          {
+            var ref = new Firebase("https://engaged.firebaseio.com/ModToRoomMap/"+roomPassword+"/");
+
+            // Attach an asynchronous callback to read the data at our posts reference
+            ref.on("value", function(snapshot) {
+              result = snapshot.val();
+
+              if(result==null){
+                alert("This room does not exist");
+              } else {
+                roomCode = snapshot.val().roomCode;
+                roomName = snapshot.val().roomName;
+
+                var modList = $firebaseArray(new Firebase("https://engaged.firebaseio.com/users/"+user.uid+"/modList"));
+                modList.$add({roomName: roomName, roomCode : roomCode});
+                //Close the dialog
+                $mdDialog.hide();
+              }
+
+
+            }, function (errorObject) {
+              console.log("The read failed: " + errorObject.code);
+            }); 
+          }
         }
 
         $scope.join = function (roomCode)

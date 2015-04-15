@@ -1,5 +1,6 @@
 var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angularMoment","ngCookies"]);
 
+alert("This does not work");
 
 app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
   function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore) {
