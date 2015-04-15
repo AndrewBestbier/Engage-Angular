@@ -1,0 +1,33 @@
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <h2 style="text-align:center" class="md-display-2 optionsDialogHeader">Create a Poll</h2>
+      <md-input-container id="input-container" flex>
+        <label>Poll Question</label>
+        <input ng-model="pollQuestion">
+      </md-input-container>
+      <md-input-container id="input-container" flex>
+        <label>Option 1</label>
+        <input ng-model="pollAnswer1">
+      </md-input-container>
+      <md-input-container id="input-container" flex>
+        <label>Option 2</label>
+        <input ng-model="pollAnswer2">
+      </md-input-container>
+      <md-input-container id="input-container" flex>
+        <label>Option 3</label>
+        <input ng-model="pollAnswer3">
+      </md-input-container>
+      <md-input-container id="input-container" flex>
+        <label>Option 4</label>
+        <input ng-model="pollAnswer4">
+      </md-input-container>
+    </div>
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="createPoll(pollQuestion,pollAnswer1,pollAnswer2,pollAnswer3,pollAnswer4)" class="md-primary md-hue-1" id="moderateButton">
+      Create Poll
+    </md-button>
+  </div>
+</md-dialog>

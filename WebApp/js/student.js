@@ -5,8 +5,8 @@ app.config(function($mdThemingProvider) {
     .accentPalette('orange');
 });
 
-app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
-  function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore) {
+app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore','$rootScope',
+  function($scope, $firebaseArray,$firebaseObject,$mdToast,$mdDialog,$cookieStore,$rootScope) {
      
     var roomCode = 0;
 
@@ -16,6 +16,45 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
             var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/questions"));
             $scope.list = list;
+
+            //Polls
+            var polls = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/polls"));
+            $scope.polls = polls;
+
+            $scope.showPollDialog = function(item){
+              
+
+              $rootScope.poll = item;
+
+              $mdDialog.show({
+                    templateUrl: 'studentPollDialog.html',
+                    controller: pollController  
+              })
+            }
+
+            function pollController($scope, $mdDialog){          
+              $scope.Question = $rootScope.poll.Question;
+              
+              $scope.option1 = $rootScope.poll.option1;
+              $scope.option2 = $rootScope.poll.option2;
+              $scope.option3 = $rootScope.poll.option3;
+              $scope.option4 = $rootScope.poll.option4;
+
+              $scope.pollSubmit = function(pollselection){
+                
+                
+                 var ref = new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/polls/"+$rootScope.poll.$id+"/"+pollselection);
+                ref.transaction(function(current_val) {
+                current_val++;
+                return current_val;
+                });
+              }
+
+              
+
+            }
+
+            //
 
             var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/Moderation"));
             $scope.moderationConstant = moderationObject;
