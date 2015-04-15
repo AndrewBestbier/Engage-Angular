@@ -31,13 +31,16 @@
   </head>
 
   <md-toolbar layout="row" style="background-color:#2980b9" class="headerbar" md-scroll-shrink>
-    <h1 class="md-toolbar-tools" layout-align-gt-sm="center">Engage</h1>
+  <md-button class="md-icon-button" aria-label="More">
+    <i ng-click="navigate()" id="menuexpand" class="fa fa-caret-left"></i>
+  </md-button>
+    <h1 class="md-toolbar-tools" style="margin-left: -48px" layout-align-gt-sm="center">Engage</h1>
   </md-toolbar>
 
   <body ng-controller="QuestionsController">
   <div role="main">
 
-    <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="item.count > -1 && item.count<1" ng-click="vote(item)">
+    <md-card class="card" ng-repeat="item in list | orderBy: sorter" ng-if="moderationConstant.moderationConstant == 0 && item.count <1" ng-click="vote(item)">
       <md-card-content>
         <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.text}}</div><div class="count">{{item.count}}</div><div class="voteIcon"><i class="fa fa-check fa-lg wild"></i></div></div>
 
