@@ -1,0 +1,23 @@
+
+
+
+<md-dialog id="dialog" aria-label="Mango (Fruit)">
+  <md-content class="sticky-container">
+    <div class="dialog-content">
+      <h2 style="text-align:center" class="md-display-2 optionsDialogHeader">{{Question}}</h2>
+        <md-radio-group ng-model="pollselection">
+          <md-radio-button value="option1Value" class="md-primary">{{option1}}</md-radio-button>
+          <md-radio-button value="option2Value"> {{option2}} </md-radio-button>
+          <md-radio-button value="option3Value">{{option3}}</md-radio-button>
+          <md-radio-button value="option4Value">{{option4}}</md-radio-button>
+        </md-radio-group>
+      </div>
+
+  </md-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="pollSubmit(pollselection)" class="md-primary md-hue-1" id="moderateButton">
+      Submit Answer
+    </md-button>
+  </div>
+</md-dialog>

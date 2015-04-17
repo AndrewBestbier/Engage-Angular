@@ -56,6 +56,11 @@
                   <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i ng-click="joinRoom(item)" class="fa fa-arrow-right fa-lg wild"></i></div></div>
                 </md-card-content>
               </md-card> 
+              <md-card class="card" ng-if="joinList.length ==0">
+                <md-card-content style="text-align:center">
+                  It seems like you have joined no rooms. Join one by clicking the green '+' in the bottom right corner.
+                </md-card-content>
+              </md-card> 
             </md-tab-template>
           </md-tab>
           <md-tab id="tab2">
@@ -64,6 +69,11 @@
               <md-card class="card" ng-repeat="item in createList">
                 <md-card-content>
                   <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i ng-click="joinCreateRoom(item)" class="fa fa-arrow-right fa-lg wild"></i></div></div>
+                </md-card-content>
+              </md-card> 
+              <md-card class="card" ng-if="createList.length ==0">
+                <md-card-content style="text-align:center">
+                  It seems like you have created no rooms. Create one by clicking the green '+' in the bottom right corner.
                 </md-card-content>
               </md-card> 
             </md-tab-template>
@@ -76,6 +86,11 @@
                   <div class="outer"><div class="time" am-time-ago="item.time"></div><div class="question">{{item.roomName}}</div><div class="voteIcon"><i ng-click="joinModRoom(item)" class="fa fa-arrow-right fa-lg wild"></i></div></div>
                 </md-card-content>
               </md-card>
+              <md-card class="card" ng-if="modList.length ==0">
+                <md-card-content style="text-align:center">
+                  It seems like you have moderated no rooms. Moderate one by clicking the green '+' in the bottom right corner.
+                </md-card-content>
+              </md-card> 
             </md-tab-template>
           </md-tab>
           <md-tab id="tab2">

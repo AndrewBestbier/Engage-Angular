@@ -2,7 +2,7 @@ var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","ngCooki
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('red');
+    .accentPalette('orange');
 });
 
 app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
