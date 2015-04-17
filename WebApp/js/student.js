@@ -10,6 +10,18 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
      
     var roomCode = 0;
 
+    $scope.isFabTab = true;
+
+    $scope.hideFab = function(){
+      $scope.isFabTab = false;
+    }
+
+    $scope.showFab = function(){
+      $scope.isFabTab = true;
+    }
+
+
+
     angular.element(document).ready(function () {
 
             roomCode = $cookieStore.get("studentRoomCode");

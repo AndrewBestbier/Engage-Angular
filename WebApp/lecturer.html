@@ -44,8 +44,8 @@
     </style>
   </head>
 
-  <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showPollDialog($event)">
-    <i class="fa fa-pencil fa-2x"></i>
+  <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showPollDialog($event)" ng-show="isFabTab">
+    <i class="fa fa-plus fa-2x"></i>
   </md-button>
 
   <md-toolbar layout="row" style="background-color:#2980b9;" class="headerbar" md-scroll-shrink>
@@ -60,7 +60,7 @@
 
   <body ng-controller="QuestionsController">
 
-  <md-tabs class="md-accent" md-selected="selectedIndex">
+  <md-tabs class="md-accent" md-selected="selectedIndex" md-stretch-tabs="always"> 
     <md-tab id="tab1">
       <md-tab-label>Questions</md-tab-label>
       <md-tab-template>
@@ -73,8 +73,8 @@
       </div>  
       </md-tab-template>
     </md-tab>
-    <md-tab id="tab2">
-      <md-tab-label>Polls</md-tab-label>
+    <md-tab id="tab2" md-on-select="showFab()" md-on-deselect="hideFab()">
+      <md-tab-label>Polls</md-tab-label >
       <md-tab-template>
       <div role="main">
         <md-card class="card" ng-repeat="item in polls" ng-click="viewPoll(item)">
@@ -82,7 +82,12 @@
             <p>{{item.Question}}</p>
           </md-card-content>
         </md-card> 
-      </div>  
+        <md-card class="card" ng-if="polls.length ==0">
+          <md-card-content style="text-align:center">
+            You have created no polls. Create one by clicking the green '+' in the bottom right corner.
+          </md-card-content>
+        </md-card>
+      </div>   
       </md-tab-template>
     </md-tab>
     </md-tabs>

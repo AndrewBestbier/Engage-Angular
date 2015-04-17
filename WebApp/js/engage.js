@@ -10,12 +10,26 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
      
     var roomCode = 0;
 
+    //Tabs
+
+    $scope.isFabTab = false;
+
+    $scope.hideFab = function(){
+      $scope.isFabTab = false;
+    }
+
+    $scope.showFab = function(){
+      $scope.isFabTab = true;
+    }
+
     angular.element(document).ready(function () {
 
             roomCode = $cookieStore.get("roomCode");
             roomPassword = $cookieStore.get("roomPassword");
 
             var moderationObject = $firebaseObject(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/Moderation"));
+
+
 
 
             //Questions

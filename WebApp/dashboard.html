@@ -43,11 +43,11 @@
 
   <body ng-controller="DashboardController">
 
-    <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showDashboardDialog()">
+    <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showDashboardDialog()" ng-show="isFabTab">
       <i class="fa fa-plus fa-2x"></i>
     </md-button>
 
-    <md-tabs class="md-accent" md-selected="selectedIndex">
+    <md-tabs class="md-accent" md-selected="selectedIndex" md-stretch-tabs="always"> 
           <md-tab id="tab1">
             <md-tab-label>Join a Room</md-tab-label>
             <md-tab-template>
@@ -93,7 +93,7 @@
               </md-card> 
             </md-tab-template>
           </md-tab>
-          <md-tab id="tab2">
+          <md-tab id="tab2" md-on-select="hideFab()" md-on-deselect="showFab()"> 
             <md-tab-label>Settings</md-tab-label>
             <md-tab-template>
 

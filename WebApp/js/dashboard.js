@@ -52,6 +52,16 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
     }
 
 
+    $scope.isFabTab = true;
+
+    $scope.hideFab = function(){
+      $scope.isFabTab = false;
+    }
+
+    $scope.showFab = function(){
+      $scope.isFabTab = true;
+    }
+
 
     $scope.showDashboardDialog = function() 
     {

@@ -38,8 +38,8 @@
     <title>Engage</title>
   </head>
 
-  <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showQuestionDialog($event)">
-    <i class="fa fa-pencil fa-2x"></i>
+  <md-button id="fab" class="md-fab md-primary" aria-label="Use Android" ng-click="showQuestionDialog($event)" ng-show="isFabTab">
+    <i class="fa fa-plus fa-2x"></i>
   </md-button>
 
   <md-toolbar layout="row" style="background-color:#2980b9" class="headerbar" md-scroll-shrink>
@@ -49,7 +49,7 @@
     <h1 class="md-toolbar-tools" style="margin-left: -48px" layout-align-gt-sm="center">Engage</h1>
   </md-toolbar>
 
-  <md-tabs class="md-accent" md-selected="selectedIndex">
+  <md-tabs class="md-accent" md-selected="selectedIndex" md-stretch-tabs="always">
     <md-tab id="tab1">
       <md-tab-label>Questions</md-tab-label>
       <md-tab-template>
@@ -62,7 +62,7 @@
       </div>  
       </md-tab-template>
     </md-tab>
-    <md-tab id="tab2">
+    <md-tab id="tab2" md-on-select="hideFab()" md-on-deselect="showFab()">
       <md-tab-label>Polls</md-tab-label>
       <md-tab-template>
       <div role="main">
