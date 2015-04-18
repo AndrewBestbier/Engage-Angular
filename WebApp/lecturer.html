@@ -79,7 +79,7 @@
       <div role="main">
         <md-card class="card" ng-repeat="item in polls" ng-click="viewPoll(item)">
           <md-card-content>
-            <p>{{item.Question}}</p>
+            <div class="outer"><div class="time"></div><div class="question">{{item.Question}}</div><div class="voteIcon"><i class="fa fa-pie-chart fa-lg wild"></i></div></div>
           </md-card-content>
         </md-card> 
         <md-card class="card" ng-if="polls.length ==0">

@@ -2,7 +2,7 @@ var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","ngCooki
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('orange');
+    .accentPalette('blue-grey');
 });
 
 app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
@@ -61,6 +61,10 @@ app.controller("DashboardController", ["$scope", "$firebaseArray","$firebaseObje
     $scope.showFab = function(){
       $scope.isFabTab = true;
     }
+
+    if (document.getElementsByTagName('body')[0] !== undefined) {
+                console.log("done");
+            }
 
 
     $scope.showDashboardDialog = function() 

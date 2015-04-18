@@ -2,13 +2,13 @@
   <md-content class="sticky-container">
     <div class="dialog-content">
       <h2 style="text-align:center" class="md-display-2 optionsDialogHeader">{{pollQuestion}}</h2>
-      <canvas id="pie" class="chart chart-pie" data="data" legend="true"
+      <canvas id="pie" class="chart chart-pie" data="data" legend="true" colors="colours"
         labels="labels"></canvas> 
     </div>
   </md-content>
   <div class="md-actions" layout="row">
     <span flex></span>
-    <md-button ng-click="moderate(roomPassword)" class="md-primary md-hue-1" id="moderateButton">
+    <md-button ng-click="close()" class="md-primary md-hue-1" id="moderateButton">
       Done
     </md-button>
   </div>

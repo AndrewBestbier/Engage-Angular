@@ -2,7 +2,7 @@ var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angular
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('orange');
+    .accentPalette('blue-grey');
 });
 
 app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore', '$rootScope',
@@ -70,7 +70,9 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
             function pollController($scope, $mdDialog, $rootScope) {
                var pollxx = $firebaseObject(new Firebase("https://engaged.firebaseio.com/rooms/"+roomCode+"/polls/"+$rootScope.pollId));
-             
+                
+
+
                var counter = 0; //After the second time, watch is called
                pollxx.$bindTo($scope, "datax").then(function() {
                  
@@ -88,6 +90,10 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
                 counter +=1;
                  
                });
+
+               $scope.close = function(){
+                 $mdDialog.hide();
+               }
     
             } 
 
@@ -99,6 +105,8 @@ app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObje
 
                   $mdDialog.hide();
             } 
+
+
           }
 
 

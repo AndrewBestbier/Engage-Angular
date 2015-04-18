@@ -5,12 +5,12 @@
   Chart.defaults.global.multiTooltipTemplate = '<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>';
 
   Chart.defaults.global.colours = [
-    '#97BBCD', // blue
-    '#DCDCDC', // light grey
-    '#F7464A', // red
-    '#46BFBD', // green
-    '#FDB45C', // yellow
-    '#949FB1', // grey
+    '#2196F3', // blue
+    '#FFEB3B', // light grey
+    '#F44336', // red
+    '#8BC34A', // green
+    '#FFEB3B', // yellow
+    '#9E9E9E', // grey
     '#4D5360'  // dark grey
   ];
 

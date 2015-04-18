@@ -2,7 +2,7 @@ var app = angular.module("Andrew", ["firebase","ngMaterial","ngAnimate","angular
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('orange');
+    .accentPalette('blue-grey');
 });
 
 app.controller("QuestionsController", ["$scope", "$firebaseArray","$firebaseObject", "$mdToast","$mdDialog", '$cookieStore',
