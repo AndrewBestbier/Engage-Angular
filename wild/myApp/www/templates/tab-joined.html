@@ -1,0 +1,17 @@
+<ion-view view-title="Joined" ng-controller="JoinedRooms" style="background-color: #EFEFEF">
+<ion-nav-buttons side="right" ng-show="false">
+  <button class="button button-icon button-clear ion-ios-plus-empty">
+  </button>
+</ion-nav-buttons>
+  <ion-content>
+        <ion-list can-swipe="true">
+          <ion-item ng-repeat="item in joinList" class="item-text-wrap item-icon-right" href="#/tab/joinedRoom">
+            <h2>{{item.roomName}}</h2>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+            <ion-option-button class="button-assertive" ng-click="remove(chat)">
+              Delete
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+</ion-view>

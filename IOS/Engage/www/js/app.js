@@ -22,7 +22,7 @@ angular.module('starter', ['ionic',"firebase"])
 
 .controller('Andrew', function($scope,$firebaseArray) {
 
-  var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/messages"));
+  var list = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/58829/questions"));
 
   $scope.listCanSwipe = true;
   $scope.list = list;

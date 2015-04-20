@@ -1,0 +1,22 @@
+<ion-view view-title="Example Room" style="background-color: #EFEFEF">
+<button class="button button-clear button-light">Ask</button>
+  <ion-nav-buttons side="right" ng-show="false">
+    <button class="button button-icon button-clear ion-ios-compose-outline">
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+        <ion-list can-swipe="true">
+          <ion-item ng-repeat="item in questions" class="item-text-wrap item-icon-right" href="#/tab/joinedRoom">
+            <h2>{{item.text}}</h2>
+            <ion-option-button class="button-info" ng-click="remove(chat)">
+               {{item.count}}
+            </ion-option-button>
+            <ion-option-button class="button-calm" ng-click="remove(chat)">
+              Vote
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+</ion-view>
+
+
