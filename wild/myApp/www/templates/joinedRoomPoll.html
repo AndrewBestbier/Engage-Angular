@@ -1,34 +1,11 @@
-<ion-view view-title="Example Room" style="background-color: #EFEFEF">
+<ion-view view-title="Example Room 2" style="background-color: #EFEFEF">
     <button class="button button-clear button-light">Ask</button>
-    <ion-nav-buttons side="right" ng-show="false">
-        <button class="button button-icon button-clear ion-ios-compose-outline" ng-click="askQuestion()">
-        </button>
-    </ion-nav-buttons>
     <ion-content>
         <ion-list can-swipe="true">
-            <ion-item ng-repeat="item in questions | orderBy:'-count'" class="item-text-wrap item-icon-right" href="#/tab/joinedRoom">
-                <h2>{{item.text}}</h2>
-                <ion-option-button class="button-info" ng-click="remove(chat)">
-                    {{item.count}}
-                </ion-option-button>
-                <ion-option-button class="button-calm" ng-click="vote(item)">
-                    Vote
-                </ion-option-button>
+            <ion-item ng-repeat="item in polls" class="item-text-wrap item-icon-right" ng-click="openPoll()">
+                <h2>{{item.Question}}</h2>
             </ion-item>
         </ion-list>
-        <ion-tabs class="tabs-icon-top tabs-color-active-positive">
-
-            <!-- Dashboard Tab -->
-            <ion-tab title="Questions" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes">
-                <ion-nav-view name="tab-dash"></ion-nav-view>
-            </ion-tab>
-
-            <!-- Chats Tab -->
-            <ion-tab title="Polls" icon-off="ion-ios-pie-outline" icon-on="ion-ios-pie">
-                <ion-nav-view name="tab-chats"></ion-nav-view>
-            </ion-tab>
-
-        </ion-tabs>
     </ion-content>
 </ion-view>
 

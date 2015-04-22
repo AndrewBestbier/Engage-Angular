@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('JoinedRoom', function($scope,$firebaseArray,$ionicModal) {
-  var questions = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/58829/questions"));
+  var questions = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/287229/questions"));
   $scope.questions = questions;
 
       $ionicModal.fromTemplateUrl('templates/askQuestion.html', {
@@ -51,10 +51,27 @@ angular.module('starter.controllers', [])
 
       $scope.vote = function(item)
       {
-        var ref = new Firebase("https://engaged.firebaseio.com/rooms/58829/questions/"+item.$id);
+        var ref = new Firebase("https://engaged.firebaseio.com/rooms/287229/questions/"+item.$id);
         ref.transaction(function(current_val) {
           current_val['count']++;
           return current_val;
         });
       }
 })
+
+.controller('JoinedRoomPoll', function($scope,$firebaseArray,$ionicModal) {
+    var polls = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/287229/polls"));
+    $scope.polls = polls;
+
+        $ionicModal.fromTemplateUrl('templates/votePollDialog.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+
+        $scope.openPoll = function()
+        {
+            $scope.modal.show();
+        }
+});

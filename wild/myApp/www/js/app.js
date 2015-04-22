@@ -78,11 +78,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',"f
   });
       $stateProvider
       // setup an abstract state for the tabs directive
-      .state('tab2', {
-        url: "/tab2",
+      .state('joinedRoomTabs', {
+        url: "/joinedRoomTabs",
         abstract: true,
-        templateUrl: "templates/tabs2.html"
+        templateUrl: "templates/joinedRoomTabs.html"
       })
+
+          .state('joinedRoomTabs.questions', {
+            url: '/joinedRoom',
+            views: {
+              'questions': {
+                templateUrl: 'templates/joinedRoom.html',
+                controller: 'JoinedRoom'
+              }
+            }
+          })
+
+          .state('joinedRoomTabs.polls', {
+            url: '/joinedRoomPoll',
+            views: {
+              'polls': {
+                templateUrl: 'templates/joinedRoomPoll.html',
+                controller: 'JoinedRoomPoll'
+              }
+            }
+          });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
