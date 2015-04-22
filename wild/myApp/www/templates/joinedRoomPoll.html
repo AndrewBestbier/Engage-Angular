@@ -1,8 +1,11 @@
 <ion-view view-title="Example Room 2" style="background-color: #EFEFEF">
-    <button class="button button-clear button-light">Ask</button>
+    <ion-nav-buttons side="left" ng-show="false">
+        <button class="button button-icon button-clear ion-ios-arrow-back" href="'/tab/dash'">
+        </button>
+    </ion-nav-buttons>
     <ion-content>
         <ion-list can-swipe="true">
-            <ion-item ng-repeat="item in polls" class="item-text-wrap item-icon-right" ng-click="openPoll()">
+            <ion-item ng-repeat="item in polls" class="item-text-wrap item-icon-right" ng-click="openPoll(item)">
                 <h2>{{item.Question}}</h2>
             </ion-item>
         </ion-list>

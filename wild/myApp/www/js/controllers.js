@@ -2,22 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-})
 
 
 .controller('JoinedRooms', function($scope,$firebaseArray) {
@@ -25,7 +10,7 @@ angular.module('starter.controllers', [])
   $scope.joinList = joinList;
 })
 
-.controller('JoinedRoom', function($scope,$firebaseArray,$ionicModal) {
+.controller('JoinedRoom', function($scope,$firebaseArray,$ionicModal,$state) {
   var questions = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/287229/questions"));
   $scope.questions = questions;
 
@@ -57,6 +42,8 @@ angular.module('starter.controllers', [])
           return current_val;
         });
       }
+
+
 })
 
 .controller('JoinedRoomPoll', function($scope,$firebaseArray,$ionicModal) {
@@ -70,8 +57,30 @@ angular.module('starter.controllers', [])
             $scope.modal = modal;
         });
 
-        $scope.openPoll = function()
+        $scope.openPoll = function(item)
         {
             $scope.modal.show();
+
+            $scope.pollId = item.$id;
+
+            $scope.Question = item.Question;
+            $scope.option1 = item.option1;
+            $scope.option2 = item.option2;
+            $scope.option3 = item.option3;
+            $scope.option4 = item.option4;
+        }
+
+        $scope.submitPollAnswer = function(choice)
+        {
+
+            $scope.modal.hide();
+
+            var ref = new Firebase("https://engaged.firebaseio.com/rooms/287229/polls/"+$scope.pollId+"/"+choice);
+            ref.transaction(function(current_val) {
+                current_val++;
+                return current_val;
+            });
+
+
         }
 });
