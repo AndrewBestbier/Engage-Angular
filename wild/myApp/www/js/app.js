@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',"f
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-joined.html',
-        controller: 'DashCtrl'
+        controller: 'JoinedRooms'
       }
     }
   })
@@ -76,6 +76,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',"f
       }
     }
   });
+      $stateProvider
+      // setup an abstract state for the tabs directive
+      .state('tab2', {
+        url: "/tab2",
+        abstract: true,
+        templateUrl: "templates/tabs2.html"
+      })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

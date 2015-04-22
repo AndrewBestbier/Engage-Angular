@@ -1,0 +1,16 @@
+<ion-modal-view style="background-color: #EFEFEF">
+    <ion-header-bar class="bar-calm">
+        <h1 class="title">Ask a question!</h1>
+    </ion-header-bar>
+    <ion-content>
+        <label class="item item-input" >
+            <textarea placeholder="Question" ng-model="question"></textarea>
+        </label>
+        <button class="button button-block button-calm" ng-click="ask(question)">
+            Ask
+        </button>
+        <button class="button button-block button-calm">
+            Cancel
+        </button>
+    </ion-content>
+</ion-modal-view>

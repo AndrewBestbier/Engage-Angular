@@ -25,7 +25,36 @@ angular.module('starter.controllers', [])
   $scope.joinList = joinList;
 })
 
-.controller('JoinedRoom', function($scope,$firebaseArray) {
+.controller('JoinedRoom', function($scope,$firebaseArray,$ionicModal) {
   var questions = $firebaseArray(new Firebase("https://engaged.firebaseio.com/rooms/58829/questions"));
   $scope.questions = questions;
+
+      $ionicModal.fromTemplateUrl('templates/askQuestion.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
+
+      $scope.askQuestion = function()
+      {
+        $scope.modal.show();
+      }
+
+      $scope.ask = function(question)
+      {
+        var date = new Date();
+        var milliSeconds = date.getTime();
+        questions.$add({text: question, count : 0, time: milliSeconds  });
+        $scope.modal.hide();
+      }
+
+      $scope.vote = function(item)
+      {
+        var ref = new Firebase("https://engaged.firebaseio.com/rooms/58829/questions/"+item.$id);
+        ref.transaction(function(current_val) {
+          current_val['count']++;
+          return current_val;
+        });
+      }
 })
